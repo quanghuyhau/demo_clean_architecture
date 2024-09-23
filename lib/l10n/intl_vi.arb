@@ -1,0 +1,8 @@
+{
+  "title_project": "Weather App",
+  "error" : "Lỗi",
+  "wind_speed" : "Tốc độ gió",
+  "rain_fall" : "Lượng mưa",
+  "highest_temperature" : "Nhiệt độ cao nhất",
+  "lowest_temperature" : "Nhiệt độ thấp nhất"
+}
