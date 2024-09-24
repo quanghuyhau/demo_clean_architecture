@@ -41,7 +41,6 @@ class WeatherModel {
   Map<String, dynamic> toJson() => _$WeatherModelToJson(this);
 }
 
-
 @JsonSerializable()
 class Coord {
   double? lon;
@@ -49,8 +48,7 @@ class Coord {
 
   Coord({this.lon, this.lat});
 
-  factory Coord.fromJson(Map<String, dynamic> json) =>
-      _$CoordFromJson(json);
+  factory Coord.fromJson(Map<String, dynamic> json) => _$CoordFromJson(json);
 
   Map<String, dynamic> toJson() => _$CoordToJson(this);
 }
@@ -82,7 +80,8 @@ class Main {
   int? seaLevel;
   int? grndLevel;
 
-  Main({this.temp,
+  Main(
+      {this.temp,
       this.feelsLike,
       this.tempMin,
       this.tempMax,
@@ -91,8 +90,7 @@ class Main {
       this.seaLevel,
       this.grndLevel});
 
-  factory Main.fromJson(Map<String, dynamic> json) =>
-      _$MainFromJson(json);
+  factory Main.fromJson(Map<String, dynamic> json) => _$MainFromJson(json);
 
   Map<String, dynamic> toJson() => _$MainToJson(this);
 }
@@ -104,8 +102,7 @@ class Wind {
   double? gust;
 
   Wind({this.speed, this.deg, this.gust});
-  factory Wind.fromJson(Map<String, dynamic> json) =>
-      _$WindFromJson(json);
+  factory Wind.fromJson(Map<String, dynamic> json) => _$WindFromJson(json);
 
   Map<String, dynamic> toJson() => _$WindToJson(this);
 }
@@ -116,9 +113,7 @@ class Rain {
 
   Rain({this.d1h});
 
-
-  factory Rain.fromJson(Map<String, dynamic> json) =>
-      _$RainFromJson(json);
+  factory Rain.fromJson(Map<String, dynamic> json) => _$RainFromJson(json);
 
   Map<String, dynamic> toJson() => _$RainToJson(this);
 }
@@ -128,8 +123,7 @@ class Clouds {
   int? all;
 
   Clouds({this.all});
-  factory Clouds.fromJson(Map<String, dynamic> json) =>
-      _$CloudsFromJson(json);
+  factory Clouds.fromJson(Map<String, dynamic> json) => _$CloudsFromJson(json);
 
   Map<String, dynamic> toJson() => _$CloudsToJson(this);
 }
@@ -144,8 +138,7 @@ class Sys {
 
   Sys({this.type, this.id, this.country, this.sunrise, this.sunset});
 
-  factory Sys.fromJson(Map<String, dynamic> json) =>
-      _$SysFromJson(json);
+  factory Sys.fromJson(Map<String, dynamic> json) => _$SysFromJson(json);
 
   Map<String, dynamic> toJson() => _$SysToJson(this);
 }

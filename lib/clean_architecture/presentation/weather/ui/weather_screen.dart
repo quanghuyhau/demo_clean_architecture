@@ -1,8 +1,7 @@
 import 'package:demo_dio_retrofit/clean_architecture/data/models/weather_model.dart';
 import 'package:demo_dio_retrofit/clean_architecture/data/services/weather_service.dart';
-import 'package:demo_dio_retrofit/clean_architecture/presentation/cubit/weather_cubit.dart';
-import 'package:demo_dio_retrofit/clean_architecture/presentation/cubit/weather_state.dart';
-import 'package:demo_dio_retrofit/l10n/l10n.dart';
+import 'package:demo_dio_retrofit/clean_architecture/presentation/weather/cubit/weather_cubit.dart';
+import 'package:demo_dio_retrofit/clean_architecture/presentation/weather/cubit/weather_state.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -162,7 +161,7 @@ class WeatherScreen extends StatelessWidget {
             ),
             const SizedBox(height: 5),
             _itemWeather(
-                title: S.current.wind_speed,
+                title: "Tốc độ gió",
                 value: "${weather.wind?.speed ?? ''} km/h"),
           ],
         ),
@@ -175,7 +174,7 @@ class WeatherScreen extends StatelessWidget {
             ),
             const SizedBox(height: 5),
             _itemWeather(
-                title: S.current.rain_fall, value: "${weather.main?.humidity ?? ''}%"),
+                title: "Lượng mưa", value: "${weather.main?.humidity ?? ''}%"),
           ],
         ),
       ],
@@ -195,7 +194,7 @@ class WeatherScreen extends StatelessWidget {
             ),
             const SizedBox(height: 5),
             _itemWeather(
-                title: S.current.highest_temperature,
+                title: "Nhiệt độ cao nhất",
                 value: "${weather.main?.tempMax?.toStringAsFixed(2) ?? ''}°C"),
           ],
         ),
@@ -208,7 +207,7 @@ class WeatherScreen extends StatelessWidget {
             ),
             const SizedBox(height: 5),
             _itemWeather(
-                title: S.current.lowest_temperature,
+                title:"Nhiệt độ thấp nhất",
                 value: "${weather.main?.tempMin?.toStringAsFixed(2) ?? ''}°C"),
           ],
         ),
