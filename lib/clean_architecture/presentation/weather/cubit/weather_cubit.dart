@@ -31,7 +31,7 @@ class WeatherCubit extends Cubit<WeatherState> {
     for (String city in city) {
       try {
         WeatherModel weather =
-            await _weatherService.getWeather(city, apiKey, 'metric');
+        await _weatherService.getWeather(city, apiKey, 'metric');
         weathers.add(weather);
         _logger.i(jsonEncode(weather));
         // print('------------------------ $city: ${jsonEncode(weather)}------------------------------------');
