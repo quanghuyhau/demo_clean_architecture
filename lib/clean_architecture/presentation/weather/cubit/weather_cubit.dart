@@ -9,7 +9,7 @@ import 'package:logger/logger.dart';
 @injectable
 class WeatherCubit extends Cubit<WeatherState> {
   final WeatherService _weatherService;
-  final Logger _logger = Logger();
+  final Logger _logger  = Logger();
 
   WeatherCubit(this._weatherService) : super(WeatherInitial());
 
@@ -33,8 +33,8 @@ class WeatherCubit extends Cubit<WeatherState> {
         WeatherModel weather =
         await _weatherService.getWeather(city, apiKey, 'metric');
         weathers.add(weather);
-        _logger.i(jsonEncode(weather));
-        // print('------------------------ $city: ${jsonEncode(weather)}------------------------------------');
+        // _logger.i(jsonEncode(weather));
+        print('------------------------ $city: ${jsonEncode(weather)}------------------------------------');
       } catch (e) {
         _logger.e('Lỗi ko call được api thời tiết trong thành phố $city: $e');
       }

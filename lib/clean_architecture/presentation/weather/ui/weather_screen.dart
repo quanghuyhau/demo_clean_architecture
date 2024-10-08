@@ -1,10 +1,10 @@
 import 'package:demo_dio_retrofit/clean_architecture/config/environment.dart';
+import 'package:demo_dio_retrofit/clean_architecture/core/constants/text.dart';
 import 'package:demo_dio_retrofit/clean_architecture/data/models/weather_model.dart';
 import 'package:demo_dio_retrofit/clean_architecture/data/services/weather_service.dart';
 import 'package:demo_dio_retrofit/clean_architecture/di/di.dart';
 import 'package:demo_dio_retrofit/clean_architecture/presentation/weather/cubit/weather_cubit.dart';
 import 'package:demo_dio_retrofit/clean_architecture/presentation/weather/cubit/weather_state.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_alice/alice.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,7 +20,8 @@ class WeatherScreen extends StatelessWidget {
           WeatherCubit(getIt<WeatherService>())..fetchWeathers(),
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Weather (${Config.environment.toString().split('.').last})'),
+          title: Text(
+              'Môi trường: ${Config.environment.toString().split('.').last}'),
           actions: [
             IconButton(
               onPressed: () => alice.showInspector(),
@@ -118,13 +119,14 @@ class WeatherScreen extends StatelessWidget {
               _present(weather),
             const SizedBox(height: 30),
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 20),
+              margin: const EdgeInsets.symmetric(horizontal: 20),
               decoration: BoxDecoration(
                 color: Colors.deepPurple,
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -185,7 +187,7 @@ class WeatherScreen extends StatelessWidget {
             ),
             const SizedBox(height: 5),
             _itemWeather(
-                title: "Tốc độ gió",
+                title: AppTexts.windSpeed,
                 value: "${weather.wind?.speed ?? ''} km/h"),
           ],
         ),
@@ -198,7 +200,7 @@ class WeatherScreen extends StatelessWidget {
             ),
             const SizedBox(height: 5),
             _itemWeather(
-                title: "Lượng mưa", value: "${weather.main?.humidity ?? ''}%"),
+                title: AppTexts.rainFall, value: "${weather.main?.humidity ?? ''}%"),
           ],
         ),
       ],
@@ -218,7 +220,7 @@ class WeatherScreen extends StatelessWidget {
             ),
             const SizedBox(height: 5),
             _itemWeather(
-                title: "Nhiệt độ cao nhất",
+                title: AppTexts.highestTemperature,
                 value: "${weather.main?.tempMax?.toStringAsFixed(2) ?? ''}°C"),
           ],
         ),
@@ -231,7 +233,7 @@ class WeatherScreen extends StatelessWidget {
             ),
             const SizedBox(height: 5),
             _itemWeather(
-                title: "Nhiệt độ thấp nhất",
+                title: AppTexts.lowestTemperature,
                 value: "${weather.main?.tempMin?.toStringAsFixed(2) ?? ''}°C"),
           ],
         ),

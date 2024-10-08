@@ -1,3 +1,6 @@
+import 'package:demo_dio_retrofit/clean_architecture/core/constants/image.dart';
+import 'package:demo_dio_retrofit/clean_architecture/core/constants/text.dart';
+import 'package:demo_dio_retrofit/clean_architecture/presentation/evaluate/ui/evaluate_screen.dart';
 import 'package:demo_dio_retrofit/clean_architecture/presentation/login/widget/outline_form_filed.dart';
 import 'package:demo_dio_retrofit/clean_architecture/presentation/weather/ui/weather_screen.dart';
 import 'package:flutter/material.dart';
@@ -28,12 +31,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   Container(
                     padding: EdgeInsets.fromLTRB(24, 20, 0, 0),
                     child: Row(
-                      children: [SvgPicture.asset('assets/images/ic_back.svg')],
+                      children: [SvgPicture.asset(AppImages.loginBack)],
                     ),
                   ),
                   Container(
                       child: Image.asset(
-                    'assets/images/logo.png',
+                    AppImages.logoPath,
                   )),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -60,7 +63,7 @@ class _LoginScreenState extends State<LoginScreen> {
   _background() {
     return SizedBox.expand(
       child: Image.asset(
-        'assets/images/background.png',
+        AppImages.backgroundPath,
         fit: BoxFit.cover,
       ),
     );
@@ -70,7 +73,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return Container(
       padding: const EdgeInsets.only(left: 16, top: 16, bottom: 20),
       child: Text(
-        'Đăng nhập',
+        AppTexts.loginTitle,
         style: TextStyle(
           fontSize: 28,
           fontWeight: FontWeight.w500,
@@ -82,13 +85,13 @@ class _LoginScreenState extends State<LoginScreen> {
 
   _loginName() {
     return OutLineFormField(
-      hintText: 'Tên đăng nhập',
+      hintText: AppTexts.usernameHint,
     );
   }
 
   _loginPass() {
     return OutLineFormField(
-      hintText: 'Mật khẩu',
+      hintText: AppTexts.passwordHint,
     );
   }
 
@@ -97,9 +100,9 @@ class _LoginScreenState extends State<LoginScreen> {
       padding: const EdgeInsets.only(left: 32, top: 6, bottom: 20),
       child: Row(
         children: [
-          Container(
-            child: Text(
-              'Quên mật khẩu',
+           Container(
+            child: const Text(
+              AppTexts.forgotPasswordText,
               style: TextStyle(
                 fontSize: 13,
                 fontWeight: FontWeight.w500,
@@ -107,7 +110,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
           ),
-          SvgPicture.asset('assets/images/ic_backright.svg')
+          SvgPicture.asset(AppImages.loginBackRight)
         ],
       ),
     );
@@ -117,15 +120,15 @@ class _LoginScreenState extends State<LoginScreen> {
     return InkWell(
       onTap: () {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => WeatherScreen()));
+            context, MaterialPageRoute(builder: (context) => const WeatherScreen()));
       },
       child: Container(
         margin: EdgeInsets.only(left: 16),
         padding: EdgeInsets.fromLTRB(130, 16, 130, 16),
         decoration: BoxDecoration(
             color: Color(0xFFFFBF4E), borderRadius: BorderRadius.circular(20)),
-        child: Text(
-          'Đăng nhập',
+        child: const Text(
+          AppTexts.loginTitle,
           style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
         ),
       ),
@@ -138,8 +141,8 @@ class _LoginScreenState extends State<LoginScreen> {
       child: Row(
         children: [
           Container(
-            child: Text(
-              'Bạn chưa có tài khoản?',
+            child: const Text(
+              AppTexts.dontHaveAccount,
               style: TextStyle(
                 fontSize: 13,
                 fontWeight: FontWeight.w500,
@@ -151,8 +154,8 @@ class _LoginScreenState extends State<LoginScreen> {
             width: 8,
           ),
           Container(
-            child: Text(
-              'Tạo tài khoản ngay',
+            child: const Text(
+              AppTexts.createAccount,
               style: TextStyle(
                 fontSize: 13,
                 fontWeight: FontWeight.w500,
@@ -195,7 +198,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(height: 20),
                 Text(
                   title,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 14,
                     color: Colors.black,
                   ),
@@ -211,7 +214,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   _containerLogin() {
     return Padding(
-      padding: EdgeInsets.only(left: 4, right: 4),
+      padding:const EdgeInsets.only(left: 4, right: 4),
       child: Row(
         children: [
           _itemLogin(
@@ -219,16 +222,19 @@ class _LoginScreenState extends State<LoginScreen> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => CustomScrollviewScreen()));
+                      builder: (context) => const CustomScrollviewScreen()));
             },
-            icon: 'assets/images/ic_contact.svg',
-            title: 'Liên hệ hỗ trợ',
+            icon: AppImages.icContact,
+            title: AppTexts.contactSupport,
           ),
           SizedBox(width: 8),
           _itemLogin(
-            onTap: () {},
-            icon: 'assets/images/ic_branch.svg',
-            title: 'Tìm chi nhánh',
+            onTap: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => const EvaluateScreen()));
+            },
+            icon: AppImages.icBrand,
+            title:AppTexts.findABranch,
           ),
         ],
       ),
@@ -244,7 +250,7 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(8),
-          child: Image.asset('assets/images/banner.png'),
+          child: Image.asset(AppImages.banner),
         ),
       ),
     );
